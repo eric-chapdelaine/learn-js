@@ -24,7 +24,16 @@
       // Using map to calculate the square root of each number
       // Use Math.sqrt(number) to calculate sq root
       const squareRoots = numbers.map(number => {
-        return 0
+        try {
+          // if (isNaN(number)) throw `${number} is not a valid number.`;
+          if (isNaN(number)) throw new Error(`${number} is not a valid number.`);
+          x = Number(number);
+          if (x < 0) throw new Error(`${x} is negative.`);
+          return Math.sqrt(number);
+        } catch (err) {
+          console.error(`Error: ${err}`);
+          return NaN;
+        }
     });
 
       // Displaying the original and transformed arrays
